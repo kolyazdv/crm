@@ -8,11 +8,11 @@ class NewsPolicy < ApplicationPolicy
   end
  
   def update?
-    return true if user.present? && user == article.user
+    return true if user.present? && user == news.user
   end
  
   def destroy?
-    return true if user.present? && user == article.user
+    return true if user.present? && user == news.user
   end
  
   private

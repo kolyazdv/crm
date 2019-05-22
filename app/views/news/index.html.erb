@@ -1,27 +1,24 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
 
-<h1>News</h1>
+  <div class="row">
 
-<table>
-  <thead>
-    <tr>
-      <th>Body</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <h1>News</h1>
 
-  <tbody>
-    <% @news.each do |news| %>
-      <tr>
-        <td><%= news.body %></td>
-        <td><%= link_to 'Show', news %></td>
-        <td><%= link_to 'Edit', edit_news_path(news) %></td>
-        <td><%= link_to 'Destroy', news, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <ul class="list-group">
+            <% @news.each do |ns| %>
+            <%= link_to ns, class: "list-group-item list-group-item-action" do %>
+              <p class="list-group-item-text">
+                  <%= ns.body %>
+                </p>
+              <% end %>
+            <% end %>
 
-<br>
+      </ul>
 
-<%= link_to 'New News', new_news_path %>
+    <br>
+        <% if user_signed_in? %>
+          <%= link_to 'Добавить новость', new_news_path, class: "btn btn-primary" %>
+        <% end %>
+  </div>
+ 
+</div>
